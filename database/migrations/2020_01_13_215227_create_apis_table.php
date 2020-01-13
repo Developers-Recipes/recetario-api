@@ -15,6 +15,8 @@ class CreateApisTable extends Migration
     {
         Schema::create('apis', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedDecimal('version');
+            $table->string('name');
             $table->timestamps();
         });
     }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\step;
+use App\Models\Step;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,10 +18,10 @@ class CreateStepsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('recipe_id');
             $table->unsignedInteger('number_step');
-            $table->integer('name');
-            $table->integer('description');
-            $table->integer('links_references');
-            $table->boolean('completed')->default(step::INCOMPLETED_STEP);
+            $table->string('name');
+            $table->string('description');
+            $table->string('links_references');
+            $table->boolean('completed')->default(Step::INCOMPLETED_STEP);
             $table->timestamps();
 
             $table->foreign('recipe_id')->references('id')->on('recipes')

@@ -20,7 +20,7 @@ class CreateStepsTable extends Migration
             $table->unsignedInteger('number_step');
             $table->string('name');
             $table->string('description');
-            $table->string('links_references');
+            $table->string('link');
             $table->boolean('completed')->default(Step::INCOMPLETED_STEP);
             $table->timestamps();
 

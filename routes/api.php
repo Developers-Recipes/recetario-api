@@ -14,3 +14,4 @@ use Illuminate\Http\Request;
 */
 
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
+Route::resource('api', 'Api\ApiController', ['only' => ['index']]);

@@ -13,18 +13,18 @@ trait ApiResponser
         return response()->json($data, $code);
     }
 
-    protected function errorResponse($message, $code)
+    protected function errorResponse($message = 'success', $code = 200)
     {
-        return response()->json(['message' => $message, 'code' => $code], $code);
+        return response()->json(['code' => $code, 'message' => $message], $code);
     }
 
     protected function showAll(Collection $collection, $message = 'success', $code = 200)
     {
-        return $this->successResponse(['message' => $message, 'result' => $collection], $code);
+        return $this->successResponse(['code' => $code, 'message' => $message, 'result' => $collection], $code);
     }
 
     protected function showOne(Model $instance, $message = 'success', $code = 200)
     {
-        return $this->successResponse(['message' => $message, 'result' => $instance], $code);
+        return $this->successResponse(['code' => $code, 'message' => $message, 'result' => $instance], $code);
     }
 }

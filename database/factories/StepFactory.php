@@ -12,7 +12,7 @@ $factory->define(Step::class, function (Faker $faker) {
         'number_step' => $faker->randomElement([1, 2, 3, 4, 5]),
         'name' => $faker->word(),
         'description' => $faker->text(),
-        'lin' => $faker->text(),
+        'link' => $faker->text(),
         'completed' => $faker->randomElement([
             Step::INCOMPLETED_STEP,
             Step::COMPLETED_STEP

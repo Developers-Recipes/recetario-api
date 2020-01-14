@@ -830,17 +830,17 @@
     },
     {
         "name": "laravel/framework",
-        "version": "v6.10.1",
-        "version_normalized": "6.10.1.0",
+        "version": "v6.11.0",
+        "version_normalized": "6.11.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/framework.git",
-            "reference": "fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14"
+            "reference": "17af23842c259edcfd8c5b9e6a7c86596e040034"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14",
-            "reference": "fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/17af23842c259edcfd8c5b9e6a7c86596e040034",
+            "reference": "17af23842c259edcfd8c5b9e6a7c86596e040034",
             "shasum": ""
         },
         "require": {
@@ -943,7 +943,7 @@
             "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^1.2).",
             "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
         },
-        "time": "2020-01-08T21:17:42+00:00",
+        "time": "2020-01-14T15:12:09+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1184,27 +1184,27 @@
     },
     {
         "name": "league/flysystem",
-        "version": "1.0.46",
-        "version_normalized": "1.0.46.0",
+        "version": "1.0.63",
+        "version_normalized": "1.0.63.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/flysystem.git",
-            "reference": "f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2"
+            "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2",
-            "reference": "f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2",
+            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8132daec326565036bc8e8d1876f77ec183a7bd6",
+            "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6",
             "shasum": ""
         },
         "require": {
+            "ext-fileinfo": "*",
             "php": ">=5.5.9"
         },
         "conflict": {
             "league/flysystem-sftp": "<1.0.6"
         },
         "require-dev": {
-            "ext-fileinfo": "*",
             "phpspec/phpspec": "^3.4",
             "phpunit/phpunit": "^5.7.10"
         },
@@ -1224,7 +1224,7 @@
             "spatie/flysystem-dropbox": "Allows you to use Dropbox storage",
             "srmklive/flysystem-dropbox-v2": "Allows you to use Dropbox storage for PHP 5 applications"
         },
-        "time": "2018-08-22T07:45:22+00:00",
+        "time": "2020-01-04T16:30:31+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

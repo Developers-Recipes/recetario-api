@@ -23,6 +23,7 @@ class CreateStepsTable extends Migration
             $table->string('link');
             $table->boolean('completed')->default(Step::INCOMPLETED_STEP);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('recipe_id')->references('id')->on('recipes')
                 ->onUpdate('cascade')->onDelete('cascade');

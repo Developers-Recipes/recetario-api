@@ -18,6 +18,7 @@ class CreateTableUserLike extends Migration
             $table->unsignedBigInteger('recipe_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('recipe_id')->references('id')->on('recipes')
                 ->onUpdate('cascade')->onDelete('cascade');

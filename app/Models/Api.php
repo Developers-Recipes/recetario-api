@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Api extends Model
 {
-    protected $fillable = ['version','name'];
+    protected $fillable = ['id','version','name'];
 }

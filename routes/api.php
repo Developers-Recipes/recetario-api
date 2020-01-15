@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
+<<<<<<< HEAD
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
@@ -22,3 +23,7 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('user', 'AuthController@user');
     });
 });
+=======
+Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
+Route::resource('api', 'Api\ApiController', ['only' => ['index']]);
+>>>>>>> 3e09e2183007c97a7fdb05e4154cbb34f1706d79

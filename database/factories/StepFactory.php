@@ -11,8 +11,8 @@ $factory->define(Step::class, function (Faker $faker) {
         'recipe_id' => Recipe::all()->random()->id,
         'number_step' => $faker->randomElement([1, 2, 3, 4, 5]),
         'name' => $faker->word(),
-        'description' => $faker->text(),
-        'link' => $faker->text(),
+        'description' => $faker->word(),
+        'link' => $faker->word(),
         'completed' => $faker->randomElement([
             Step::INCOMPLETED_STEP,
             Step::COMPLETED_STEP

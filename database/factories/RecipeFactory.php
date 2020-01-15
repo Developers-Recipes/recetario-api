@@ -13,7 +13,7 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'state_id' => State::all()->random()->id,
         'forked_from' => User::all()->random()->id,
         'name' => $faker->word(),
-        'description' => $faker->text(),
+        'description' => $faker->word(),
         'likes' => $faker->numberBetween(1, 200),
     ];
 });

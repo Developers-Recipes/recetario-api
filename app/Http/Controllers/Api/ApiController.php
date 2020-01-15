@@ -11,6 +11,6 @@ class ApiController extends RequestController
 {
     public function index()
     {
-        return new ResourceApi(Api::all());
+        return $this->showAll(Api::all());
     }
 }

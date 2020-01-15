@@ -20,7 +20,7 @@ class CreateRecipesTable extends Migration
             $table->unsignedBigInteger('state_id');
             $table->string('name');
             $table->string('description');
-            $table->boolean('is_current');
+            $table->boolean('is_current')->default(false);
             $table->unsignedBigInteger('likes');
             $table->timestamps();
 

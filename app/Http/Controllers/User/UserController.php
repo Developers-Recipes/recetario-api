@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\RequestController;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends ApiController
+class UserController extends RequestController
 {
     /**
      * Display a listing of the resource.

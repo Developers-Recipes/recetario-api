@@ -27,4 +27,9 @@ trait ApiResponser
     {
         return $this->successResponse(['code' => $code, 'message' => $message, 'result' => $instance], $code);
     }
+
+    protected function messageResponse($message = 'success', $code = 200)
+    {
+        return $this->successResponse(['code' => $code, 'message' => $message], $code);
+    }
 }

@@ -35,8 +35,8 @@ class AuthController extends RequestController
         $user = $request->user();
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
-        if ($request->remember_me) {
-            $token->expires_at = Carbon::now()->addMonth(1);
+        if (!$request->remember_me) {
+            $token->expires_at = Carbon::now()->addWeeks(1);
         }
         $token->save();
 
@@ -50,11 +50,14 @@ class AuthController extends RequestController
         return response()->json($data);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
+        $request->user()->token()->revoke();
+        return $this->messageResponse('Sesión cerrada correctamente');
     }
 
-    public function user()
+    public function user(Request $request)
     {
+        return $this->showOne($request->user());
     }
 }

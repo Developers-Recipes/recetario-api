@@ -7,12 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Api extends Model
 {
-    use SoftDeletes;
-
-    protected $dates = ['deleted_at'];
-
-    protected $fillable = [
-        'version',
-        'name'
-    ];
+	protected $fillable = ['id','version','name'];
 }
+

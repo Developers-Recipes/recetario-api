@@ -17,7 +17,6 @@ class AuthController extends RequestController
     {
         $params = $request->all();
         $params['password'] = bcrypt($request->password);
-        unset($params['password_confirmation']);
 
         $user = User::create($params);
 
@@ -26,6 +25,7 @@ class AuthController extends RequestController
 
     public function login(AuthLoginRequest $request)
     {
+
         $credentials = request(['email', 'password']);
 
         if (!Auth::attempt($credentials)) {
@@ -35,9 +35,11 @@ class AuthController extends RequestController
         $user = $request->user();
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
+
         if (!$request->remember_me) {
             $token->expires_at = Carbon::now()->addWeeks(1);
         }
+
         $token->save();
 
         $data = [

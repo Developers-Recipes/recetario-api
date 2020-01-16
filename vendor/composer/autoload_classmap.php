@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Requests\\AuthLoginRequest' => $baseDir . '/app/Http/Requests/AuthLoginRequest.php',
     'App\\Http\\Requests\\AuthSignUpRequest' => $baseDir . '/app/Http/Requests/AuthSignUpRequest.php',
     'App\\Models\\Api' => $baseDir . '/app/Models/Api.php',
+    'App\\Models\\Like' => $baseDir . '/app/Models/Like.php',
     'App\\Models\\Recipe' => $baseDir . '/app/Models/Recipe.php',
     'App\\Models\\State' => $baseDir . '/app/Models/State.php',
     'App\\Models\\Step' => $baseDir . '/app/Models/Step.php',

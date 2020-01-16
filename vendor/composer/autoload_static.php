@@ -525,6 +525,7 @@ class ComposerStaticInite3f8b746eedaafd7fa4b098370d37ff8
         'App\\Http\\Requests\\AuthLoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AuthLoginRequest.php',
         'App\\Http\\Requests\\AuthSignUpRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AuthSignUpRequest.php',
         'App\\Models\\Api' => __DIR__ . '/../..' . '/app/Models/Api.php',
+        'App\\Models\\Like' => __DIR__ . '/../..' . '/app/Models/Like.php',
         'App\\Models\\Recipe' => __DIR__ . '/../..' . '/app/Models/Recipe.php',
         'App\\Models\\State' => __DIR__ . '/../..' . '/app/Models/State.php',
         'App\\Models\\Step' => __DIR__ . '/../..' . '/app/Models/Step.php',

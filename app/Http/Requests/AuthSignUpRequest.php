@@ -25,6 +25,7 @@ class AuthSignUpRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'lastname' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed'
         ];
@@ -34,6 +35,7 @@ class AuthSignUpRequest extends FormRequest
     {
         return [
             'name.required' => 'El :attribute es requerido',
+            'lastname.required' => 'El :attribute es requerido',
             'email.required' => 'El :attribute es requerido',
             'email.email' => 'Debes ingresar un :attribute válido',
             'email.unique' => 'Este :attribute ya está en uso',
@@ -46,7 +48,8 @@ class AuthSignUpRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'nombre de usuario',
+            'name' => 'nombre',
+            'lastname' => 'apellido',
             'email' => 'correo electrónico',
             'password' => 'contraseña'
         ];

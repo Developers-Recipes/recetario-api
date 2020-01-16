@@ -25,8 +25,6 @@ class DatabaseSeeder extends Seeder
         Api::truncate();
         State::truncate();
 
-        DB::table('user_like')->truncate();
-
         factory(User::class, 5)->create();
         factory(State::class, 3)->create();
         factory(Recipe::class, 5)->create();

@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
+use App\Models\Recipe;
+
 class User extends Authenticatable
 {
     use Notifiable, HasApiTokens, SoftDeletes;
@@ -20,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'photo'
+        'name', 'lastname', 'email', 'password', 'photo'
     ];
 
     /**
@@ -40,4 +42,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relaciones
+     */
+
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class);
+    }
 }

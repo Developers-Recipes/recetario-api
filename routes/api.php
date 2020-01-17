@@ -21,6 +21,9 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
     });
+
+    //post Recipe
+	Route::post('recipe', 'Recipe\RecipeController@store');
 });
 
 Route::get('api', 'Api\ApiController@index');

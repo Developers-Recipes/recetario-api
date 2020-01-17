@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\User;
+use App\Models\State;
+use App\Models\Step;
+use App\Models\Like;
+
 class Recipe extends Model
 {
     const PENDING_STATE = 'pending';
@@ -24,4 +29,28 @@ class Recipe extends Model
         'likes',
         'is_current'
     ];
+
+    /**
+     * Relaciones
+     */
+
+    public function steps()
+    {
+        return $this->hasMany(Step::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function state()
+    {
+        return $this->hasOne(State::class);
+    }
 }

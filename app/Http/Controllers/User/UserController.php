@@ -24,21 +24,6 @@ class UserController extends RequestController
      */
     public function store(Request $request)
     {
-        $rules = [
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8|confirmed'
-        ];
-
-        $this->validate($request, $rules);
-
-        $params = $request->all();
-
-        $params['password'] = bcrypt($request->password);
-        unset($params['password_confirmation']);
-
-        $user = User::create($params);
-
-        return $this->showOne($user);
     }
 
     /**

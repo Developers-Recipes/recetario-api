@@ -25,10 +25,10 @@ class DatabaseSeeder extends Seeder
         Api::truncate();
         State::truncate();
 
-        factory(User::class, 5)->create();
+        factory(User::class, 10)->create();
         factory(State::class, 3)->create();
-        factory(Recipe::class, 5)->create();
-        factory(Step::class, 25)->create();
+        factory(Recipe::class, 500)->create();
+        factory(Step::class, 2000)->create();
         factory(Api::class, 1)->create();
     }
 }

@@ -13,20 +13,56 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('api', 'Api\ApiController@index');
+
+
+/**
+ * Routes for the first version of the API
+ */
+
 Route::group(
     [
-        'prefix' => 'auth',
+        'prefix' => 'V1',
         'middleware' => 'json.request'
     ],
     function () {
-        Route::post('login', 'AuthController@login');
-        Route::post('signup', 'AuthController@signup');
 
-        Route::group(['middleware' => 'auth:api'], function () {
-            Route::get('logout', 'AuthController@logout');
-            Route::get('user', 'AuthController@user');
-        });
+        /**
+         * Route group for authentication
+         */
+        Route::group(
+            [
+                'prefix' => 'auth'
+            ],
+            function () {
+                Route::post('login', 'AuthController@login');
+                Route::post('signup', 'AuthController@signup');
+
+                Route::group(['middleware' => 'auth:api'], function () {
+                    Route::get('logout', 'AuthController@logout');
+                    Route::get('user', 'AuthController@user');
+                });
+            }
+        );
+
+        /**
+         * Group of protected routes with authentication
+         */
+        Route::group(
+            [
+                'middleware' => 'auth:api'
+            ],
+            function () {
+
+                /**
+                 * Route group for recipes
+                 */
+                Route::group([
+                    'namespace' => 'Recipe'
+                ], function () {
+                    Route::resource('recipes', 'RecipeController', ['only' => ['index']]);
+                });
+            }
+        );
     }
 );
-
-Route::get('api', 'Api\ApiController@index');

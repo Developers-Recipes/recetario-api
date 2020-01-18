@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Recipe;
 
-use App\Http\Controllers\RequestController;
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Recipe\RecipesCollection;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
-class UserController extends RequestController
+class RecipeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class UserController extends RequestController
      */
     public function index()
     {
+        return new RecipesCollection(Recipe::paginate(5));
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -24,15 +27,16 @@ class UserController extends RequestController
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Recipe $recipe)
     {
         //
     }
@@ -41,10 +45,10 @@ class UserController extends RequestController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Recipe $recipe)
     {
         //
     }
@@ -52,10 +56,10 @@ class UserController extends RequestController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Recipe $recipe)
     {
         //
     }

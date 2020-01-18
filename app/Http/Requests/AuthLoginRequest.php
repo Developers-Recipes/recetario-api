@@ -28,22 +28,4 @@ class AuthLoginRequest extends FormRequest
             'password' => 'required'
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'email.required' => 'El :attribute es requerido',
-            'email.email' => 'El :attribute no es válido',
-            'email.exists' => 'No existe una cuenta con este :attribute',
-            'password.require' => 'La :attribute es requerida'
-        ];
-    }
-
-    public function attributes()
-    {
-        return [
-            'email' => 'correo electrónico',
-            'password' => 'contraseña'
-        ];
-    }
 }

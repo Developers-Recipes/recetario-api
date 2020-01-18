@@ -7,22 +7,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Recipe;
 
-class Step extends Model
+class Like extends Model
 {
-    const COMPLETED_STEP = true;
-    const INCOMPLETED_STEP = false;
-
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
         'recipe_id',
-        'number_step',
-        'name',
-        'description',
-        'link',
-        'completed'
+        'user_id'
     ];
 
     /**

@@ -18,6 +18,7 @@ class CreateApisTable extends Migration
             $table->unsignedDecimal('version');
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

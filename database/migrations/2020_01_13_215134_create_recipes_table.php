@@ -16,13 +16,14 @@ class CreateRecipesTable extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('forked_from');
+            $table->unsignedBigInteger('forked_from')->nullable();
             $table->unsignedBigInteger('state_id');
             $table->string('name');
             $table->string('description');
             $table->boolean('is_current')->default(false);
             $table->unsignedBigInteger('likes');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');

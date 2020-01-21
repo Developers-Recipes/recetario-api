@@ -60,7 +60,8 @@ Route::group(
                 Route::group([
                     'namespace' => 'Recipe'
                 ], function () {
-                    Route::resource('recipes', 'RecipeController', ['only' => ['index']]);
+                    Route::resource('recipes', 'RecipeController', ['only' => ['index', 'show', 'update']]);
+                    Route::post('recipes/{recipe}/fork', 'RecipeController@fork');
                 });
             }
         );

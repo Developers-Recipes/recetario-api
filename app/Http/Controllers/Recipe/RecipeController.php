@@ -16,9 +16,9 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($pages)
     {
-        return new RecipesCollection(Recipe::paginate(5));
+        return new RecipesCollection(Recipe::paginate($pages));
     }
 
     /**

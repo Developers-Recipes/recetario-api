@@ -24,7 +24,7 @@ class RecipeResource extends JsonResource
                 'state_id' => $this->state_id,
                 'name' => $this->name,
                 'description' => $this->description,
-                'is_current' => $this->is_current,
+                'is_current' => boolval($this->is_current),
             ]
         ];
     }

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Recipe;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MessageResource;
 use App\Http\Resources\Recipe\RecipeResource;
 use App\Http\Resources\Recipe\RecipesCollection;
 use App\Models\Recipe;
 use App\Services\ForkRecipe;
-use App\Services\RecipeCollectionMap;
+use App\Services\RecipeCurrentService;
+use App\Services\RecipeLikeService;
+use App\Services\RecipeMutatorService;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -17,7 +20,7 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($pages = 10, RecipeCollectionMap $action)
+    public function index($pages = 10, RecipeMutatorService $action)
     {
         $recipes = Recipe::paginate($pages);
 
@@ -74,5 +77,31 @@ class RecipeController extends Controller
     {
         $result = $action->execute($recipe, auth()->user());
         return new RecipeResource($result);
+    }
+
+    public function like(Recipe $recipe, RecipeLikeService $action)
+    {
+        $result = $action->execute($recipe, auth()->user());
+
+        $data = [
+            'status' => 'success',
+            'code' => 200,
+            'message' => 'This like has beed ' . $result . ' successfully.'
+        ];
+
+        return new MessageResource($data);
+    }
+
+    public function current(Recipe $recipe, RecipeCurrentService $action)
+    {
+        $result = $action->execute($recipe);
+
+        $data = [
+            'status' => 'success',
+            'code' => 200,
+            'message' => $result
+        ];
+
+        return new MessageResource($data);
     }
 }

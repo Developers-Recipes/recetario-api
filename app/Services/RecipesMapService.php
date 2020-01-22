@@ -5,15 +5,11 @@ namespace App\Services;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
-use phpDocumentor\Reflection\Types\Boolean;
 
-class RecipeCollectionMap
+class RecipesMapService
 {
     public function execute(LengthAwarePaginator $paginate, User $user): LengthAwarePaginator
     {
-        //is_liked
-        //progress
-        //steps
 
         $paginate->getCollection()->map(function (Recipe $item) use ($user) {
             //Agregar el numero de pasos
@@ -24,31 +20,38 @@ class RecipeCollectionMap
 
             //Progreso
             $completedSteps = $steps->where('completed', 1)->count();
-            $item->progress = $completedSteps / $totalSteps;
+            $progress = $totalSteps == 0 ? 0 : $completedSteps / $totalSteps;
+            $item->progress = $progress;
+
+            //Estado actual de la receta: pending - in progress - ready
+            if ($progress == 0) {
+                $item->state_id = 1;
+            } elseif ($progress > 0 && $progress < 1) {
+                $item->state_id = 2;
+            } else {
+                $item->state_id = 3;
+            }
 
             //Cantidad de likes de la receta
             $likes = $item->likes;
             $item->number_likes = $likes->count();
-            $item->is_liked = 0;
+            $item->is_liked = false;
 
             //Validar si el usuario a dado like a la receta
             foreach ($likes as $like) {
                 if ($like->user_id === $user->id) {
-                    $item->is_liked = 1;
-                    unset($item->likes);
-                    return;
+                    $item->is_liked = true;
+                    continue;
                 }
             }
             unset($item->likes);
+
+            $item->is_current = boolval($item->is_current);
+
             return $item;
         });
 
 
         return $paginate;
-    }
-
-    private function isLiked($like, $user)
-    {
-        return $like->user_id === $user->id;
     }
 }

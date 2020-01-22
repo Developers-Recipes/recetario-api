@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Recipe;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Recipe\RecipeResource;
 use App\Http\Resources\Recipe\RecipesCollection;
 use App\Models\Recipe;
+use App\Services\ForkRecipe;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -14,9 +16,9 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($pages)
     {
-        return new RecipesCollection(Recipe::paginate(5));
+        return new RecipesCollection(Recipe::paginate($pages));
     }
 
     /**
@@ -38,7 +40,7 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        //
+        return new RecipeResource($recipe);
     }
 
     /**
@@ -50,7 +52,6 @@ class RecipeController extends Controller
      */
     public function update(Request $request, Recipe $recipe)
     {
-        //
     }
 
     /**
@@ -62,5 +63,11 @@ class RecipeController extends Controller
     public function destroy(Recipe $recipe)
     {
         //
+    }
+
+    public function fork(Recipe $recipe, ForkRecipe $action)
+    {
+        $result = $action->execute($recipe, auth()->user());
+        return new RecipeResource($result);
     }
 }

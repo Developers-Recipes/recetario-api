@@ -10,6 +10,10 @@ use App\Models\Recipe;
 class State extends Model
 {
 
+    const PENDING_STATE = 'pending';
+    const IN_PROGRESS_STATE = 'in progress';
+    const READY_STATE = 'ready';
+
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];

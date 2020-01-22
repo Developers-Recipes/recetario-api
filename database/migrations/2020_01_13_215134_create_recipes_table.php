@@ -17,11 +17,11 @@ class CreateRecipesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('forked_from')->nullable();
-            $table->unsignedBigInteger('state_id');
+            $table->unsignedBigInteger('state_id')->default(1);
             $table->string('name');
             $table->string('description');
             $table->boolean('is_current')->default(false);
-            $table->unsignedBigInteger('likes');
+            $table->unsignedBigInteger('likes')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

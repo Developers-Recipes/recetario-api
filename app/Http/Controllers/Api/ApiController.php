@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\RequestController;
+use App\Http\Controllers\Controller;
 use App\Models\Api;
 use Illuminate\Http\Request;
 
-class ApiController extends RequestController
+class ApiController extends Controller
 {
     public function index()
     {
         $version = Api::all();
-        return $this->showAll($version);
+
+        return response()->json($version, 200);
     }
 }

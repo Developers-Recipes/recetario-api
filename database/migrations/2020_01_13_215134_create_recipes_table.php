@@ -21,7 +21,6 @@ class CreateRecipesTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->boolean('is_current')->default(false);
-            $table->unsignedBigInteger('likes')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

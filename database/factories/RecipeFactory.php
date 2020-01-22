@@ -15,6 +15,5 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'forked_from' => $forked ? User::all()->random()->id : null,
         'name' => $faker->word(),
         'description' => $faker->word(),
-        'likes' => $faker->numberBetween(1, 200),
     ];
 });

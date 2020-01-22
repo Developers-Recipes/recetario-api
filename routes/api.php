@@ -60,7 +60,7 @@ Route::group(
                 Route::group([
                     'namespace' => 'Recipe'
                 ], function () {
-                    Route::get('recipes/{pages}', 'RecipeController@index');
+                    Route::get('recipes/paginated/{pages?}', 'RecipeController@index');
                     Route::resource('recipes', 'RecipeController', ['only' => ['show']]);
                     Route::post('recipes/{recipe}/fork', 'RecipeController@fork');
                 });

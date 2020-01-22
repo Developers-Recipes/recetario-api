@@ -7,6 +7,7 @@ use App\Http\Resources\Recipe\RecipeResource;
 use App\Http\Resources\Recipe\RecipesCollection;
 use App\Models\Recipe;
 use App\Services\ForkRecipe;
+use App\Services\RecipeCollectionMap;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -16,9 +17,13 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($pages)
+    public function index($pages = 10, RecipeCollectionMap $action)
     {
-        return new RecipesCollection(Recipe::paginate($pages));
+        $recipes = Recipe::paginate($pages);
+
+        $newRecipes = $action->execute($recipes, auth()->user());
+
+        return new RecipesCollection($newRecipes);
     }
 
     /**

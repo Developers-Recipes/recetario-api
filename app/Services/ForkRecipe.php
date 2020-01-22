@@ -16,7 +16,6 @@ class ForkRecipe
             'name' => $recipe->name,
             'description' => $recipe->description,
             'state_id' => 1,
-            'likes' => 0
         ]);
 
         $steps = $recipe->steps;

@@ -15,6 +15,7 @@ class RecipesCollection extends ResourceCollection
      */
     public function toArray($request)
     {
+
         return [
             'status' => 'success',
             'code' => 200,

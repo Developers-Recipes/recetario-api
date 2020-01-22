@@ -26,7 +26,6 @@ class Recipe extends Model
         'forked_from',
         'name',
         'description',
-        'likes',
         'is_current'
     ];
 

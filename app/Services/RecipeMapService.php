@@ -10,9 +10,29 @@ class RecipeMapService
     public function execute(Recipe $recipe, User $user)
     {
         //Agregar la cantidad de pasos
-        //Agregar si es la receta actual
+        $steps = $recipe->steps;
+        $totalSteps = $steps->count();
+        $recipe->number_steps = $totalSteps;
+
+        //Agregar progreso de la receta
+        $completedSteps = $recipe->steps()->where('completed', 1)->get()->count();
+        $progress = $totalSteps === 0 ? 0 : $completedSteps / $totalSteps;
+        $recipe->progress = $progress;
+
         //Agregar la cantidad de likes
+        $likes = $recipe->likes;
+        $numberLikes =  $likes->count();
+        $recipe->number_likes = $numberLikes;
+
         //Agregar si el usuario actual ha dado like
-        //Agregar la colección de likes con los datos de los usuarios
+        $userLikes = $recipe->likes()->where('user_id', $user->id)->get();
+        $recipe->is_liked = false;
+        if ($userLikes->count() > 0) {
+            $recipe->is_liked = true;
+        }
+
+        $recipe->is_current = boolval($recipe->is_current);
+
+        return $recipe;
     }
 }

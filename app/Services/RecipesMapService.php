@@ -35,14 +35,12 @@ class RecipesMapService
             //Cantidad de likes de la receta
             $likes = $item->likes;
             $item->number_likes = $likes->count();
-            $item->is_liked = false;
 
             //Validar si el usuario a dado like a la receta
-            foreach ($likes as $like) {
-                if ($like->user_id === $user->id) {
-                    $item->is_liked = true;
-                    continue;
-                }
+            $item->is_liked = false;
+            $userLikes = $item->likes()->where('user_id', $user->id)->get();
+            if ($userLikes->count() > 0) {
+                $item->is_liked = true;
             }
             unset($item->likes);
 

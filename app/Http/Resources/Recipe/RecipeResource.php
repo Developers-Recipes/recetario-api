@@ -17,15 +17,7 @@ class RecipeResource extends JsonResource
         return [
             'status' => 'succes',
             'code' => 200,
-            'data' => [
-                'id' => $this->id,
-                'user_id' => $this->user_id,
-                'forked_from' => $this->forked_from,
-                'state_id' => $this->state_id,
-                'name' => $this->name,
-                'description' => $this->description,
-                'is_current' => boolval($this->is_current),
-            ]
+            'data' => parent::toArray($request)
         ];
     }
 }

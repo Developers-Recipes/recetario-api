@@ -23,7 +23,6 @@ class RecipeController extends Controller
     public function index($pages = 10, RecipeMutatorService $action)
     {
         $recipes = Recipe::paginate($pages);
-
         $newRecipes = $action->execute($recipes, auth()->user());
 
         return new RecipesCollection($newRecipes);
@@ -46,9 +45,10 @@ class RecipeController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipe $recipe)
+    public function show(Recipe $recipe, RecipeMutatorService $action)
     {
-        return new RecipeResource($recipe);
+        $result = $action->execute($recipe, auth()->user());
+        return new RecipeResource($result);
     }
 
     /**
@@ -94,14 +94,8 @@ class RecipeController extends Controller
 
     public function current(Recipe $recipe, RecipeCurrentService $action)
     {
-        $result = $action->execute($recipe);
+        $result = $action->execute($recipe, auth()->user());
 
-        $data = [
-            'status' => 'success',
-            'code' => 200,
-            'message' => $result
-        ];
-
-        return new MessageResource($data);
+        return new MessageResource($result);
     }
 }

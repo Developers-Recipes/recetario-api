@@ -9,23 +9,15 @@ class RecipeLikeService
 {
     public function execute(Recipe $recipe, User $user)
     {
-        $likes = $recipe->likes;
-        $is_liked = false;
+        $likes = $recipe->likes()->where('user_id', $user->id)->get();
 
-        foreach ($likes as $like) {
-            if ($like->user_id === $user->id) {
-                $is_liked = true;
-            }
-        }
-
-
-        if ($is_liked) {
+        if ($likes->count() > 0) {
             $recipe->likes()->where('user_id', $user->id)->delete();
+            $result = 'deleted';
         } else {
             $recipe->likes()->create(['user_id' => $user->id]);
+            $result = 'created';
         }
-
-        $result = !$is_liked ? 'deleted' : 'created';
 
         return $result;
     }

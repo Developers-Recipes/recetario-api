@@ -30,4 +30,19 @@ class State extends Model
     {
         return $this->belongsToMany(Recipe::class);
     }
+
+    public static function getPendigState(){
+        $state = State::where('state', self::PENDING_STATE)->first();
+        return $state;
+    }
+
+    public static function getInProgressState(){
+        $state = State::where('state', self::IN_PROGRESS_STATE)->first();
+        return $state;
+    }
+    
+    public static function getReadyState(){
+        $state = State::where('state', self::READY_STATE)->first();
+        return $state;
+    }
 }

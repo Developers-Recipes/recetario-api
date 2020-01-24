@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Recipe;
+use App\Models\State;
 use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -12,6 +13,7 @@ class RecipesMapService
     {
 
         $paginate->getCollection()->map(function (Recipe $item) use ($user) {
+
             //Agregar el numero de pasos
             $steps = $item->steps;
             $totalSteps = $steps->count();
@@ -25,11 +27,11 @@ class RecipesMapService
 
             //Estado actual de la receta: pending - in progress - ready
             if ($progress == 0) {
-                $item->state_id = 1;
+                $item->state_id = State::getPendigState()->id;
             } elseif ($progress > 0 && $progress < 1) {
-                $item->state_id = 2;
+                $item->state_id = State::getInProgressState()->id;
             } else {
-                $item->state_id = 3;
+                $item->state_id = State::getReadyState()->id;
             }
 
             //Cantidad de likes de la receta

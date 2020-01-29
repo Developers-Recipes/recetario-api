@@ -2,11 +2,10 @@
 
 namespace App\Http\Resources\Recipe;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class RecipesCollection extends ResourceCollection
+class RecipeResource extends JsonResource
 {
-
     /**
      * Transform the resource into an array.
      *
@@ -15,11 +14,10 @@ class RecipesCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-
         return [
-            'status' => 'success',
+            'status' => 'succes',
             'code' => 200,
-            'data' => $this->collection
+            'data' => parent::toArray($request)
         ];
     }
 }

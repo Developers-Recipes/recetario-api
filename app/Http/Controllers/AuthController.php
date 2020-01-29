@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\RequestController;
 use App\Http\Requests\AuthLoginRequest;
 use App\Http\Requests\AuthSignUpRequest;
 use App\Http\Resources\LoginResource;
@@ -13,7 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends RequestController
+class AuthController extends Controller
 {
 
     public function signup(AuthSignUpRequest $request)
